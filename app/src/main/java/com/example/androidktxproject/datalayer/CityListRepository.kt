@@ -2,6 +2,8 @@ package com.example.androidktxproject.datalayer
 
 import com.example.androidktxproject.retofit.RetrofitService
 
-class CityListRepository constructor(private val retrofitService: RetrofitService) {
+abstract class BaseRepository(open val retrofitService: RetrofitService)
+
+class CityListRepository constructor(override val retrofitService: RetrofitService) : BaseRepository(retrofitService) {
     suspend fun getAllMovies() = retrofitService.getAllCityName()
 }

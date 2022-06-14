@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androidktxproject.datalayer.CityListRepository
 import com.example.androidktxproject.retofit.RetrofitBuilder.buildAPI
-import com.example.androidktxproject.retofit.RetrofitBuilder.getService
 import com.example.androidktxproject.retofit.RetrofitService
 import com.example.androidktxproject.uilayer.CityListAdapter
 import com.example.androidktxproject.uilayer.CityListViewModel
@@ -41,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             ViewModelProvider(this, MyViewModelFactory(CityListRepository(buildAPI(RetrofitService::class.java)))).get(
                 CityListViewModel::class.java
             )
+            //CityViewModelFactory(CityListRepository(buildAPI(RetrofitService::class.java))).create()
         //viewModel=ViewModelProviders.of(this@MainActivity, CityListViewModel(CityListRepository(getService()))).get(CityListViewModel::class.java)
         viewModel.callCityListApi()
         viewModel.getCityList().observe(this) {
