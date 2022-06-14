@@ -2,10 +2,10 @@ package com.example.androidktxproject.uilayer
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.androidktxproject.datalayer.BaseRepository
 import com.example.androidktxproject.datalayer.CityListRepository
+import com.example.androidktxproject.retofit.BaseRepository
 
-class MyViewModelFactory <K:BaseRepository> constructor(private val repository: K) :
+class MyViewModelFactory <K: BaseRepository> constructor(private val repository: K) :
     ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

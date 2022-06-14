@@ -1,9 +1,9 @@
 package com.example.androidktxproject.datalayer
 
 import com.example.androidktxproject.retofit.RetrofitService
+import javax.inject.Inject
 
-abstract class BaseRepository(open val retrofitService: RetrofitService)
 
-class CityListRepository constructor(override val retrofitService: RetrofitService) : BaseRepository(retrofitService) {
+class CityListRepository @Inject constructor( val retrofitService: RetrofitService) {
     suspend fun getAllMovies() = retrofitService.getAllCityName()
 }

@@ -2,8 +2,9 @@ package com.example.androidktxproject.retofit
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-object RetrofitBuilder {
+class RetrofitBuilder @Inject constructor() {
     val baseUrl = "http://dataservice.accuweather.com/locations/v1/"
 
     fun <T> buildAPI(api: Class<T>): T {

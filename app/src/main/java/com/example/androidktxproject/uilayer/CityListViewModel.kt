@@ -4,11 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidktxproject.datalayer.CityListRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.lang.Exception
+import javax.inject.Inject
 
-class CityListViewModel(val cityListRepository: CityListRepository) : ViewModel() {
+@HiltViewModel
+class CityListViewModel @Inject constructor(val cityListRepository: CityListRepository) : ViewModel() {
     val cityNameList = MutableLiveData<List<String>>()
     val cityListLoadError = MutableLiveData<String>()
     val loading = MutableLiveData<Boolean>()
