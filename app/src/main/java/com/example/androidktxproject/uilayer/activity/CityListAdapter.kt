@@ -1,19 +1,16 @@
-package com.example.androidktxproject.uilayer
+package com.example.androidktxproject.uilayer.activity
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
-import com.example.androidktxproject.R
 import com.example.androidktxproject.databinding.CityListRawBinding
-import kotlinx.android.synthetic.main.city_list_raw.view.*
+import com.example.test.model.CityNameListResponseItem
 
 class CityListAdapter : RecyclerView.Adapter<CityListAdapter.ViewHolder>() {
-    var cityList: List<String>? = null
+    var cityList: List<CityNameListResponseItem>? = null
     private lateinit var binding: CityListRawBinding
-    fun getCityListData(mCityList: List<String> = emptyList()) {
+    fun getCityListData(mCityList: List<CityNameListResponseItem>? = emptyList()) {
         this.cityList = mCityList
         notifyDataSetChanged()
     }
@@ -21,8 +18,6 @@ class CityListAdapter : RecyclerView.Adapter<CityListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = CityListRawBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-//        val view =
-//            LayoutInflater.from(parent.context).inflate(R.layout.city_list_raw, parent, false)
         return ViewHolder(binding)
     }
 
@@ -30,7 +25,8 @@ class CityListAdapter : RecyclerView.Adapter<CityListAdapter.ViewHolder>() {
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // sets the text to the textview from our itemHolder class
-        holder.bind(cityList?.get(position) ?: "")
+        val cityNameListResponseItem = cityList?.get(position)
+        holder.bind(cityNameListResponseItem?.LocalizedName ?: "")
     }
 
 
@@ -42,7 +38,7 @@ class CityListAdapter : RecyclerView.Adapter<CityListAdapter.ViewHolder>() {
     // Holds the views for adding it to image and text
     class ViewHolder(var binding: CityListRawBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(cityName: String) {
-            binding.setVariable(BR.cityName,cityName)
+            binding.setVariable(BR.mCityName, cityName)
         }
     }
 
